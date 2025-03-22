@@ -1,0 +1,191 @@
+// --------
+// -- COMPONENTS
+// --------
+@import "variables";
+@import "components/sections";
+@import "components/buttons";
+@import "components/forms";
+@import "components/lists";
+@import "components/notifications";
+@import "components/tables";
+@import "components/pagination";
+
+
+
+
+/**
+
+    Global
+
+ */
+// --------
+// -- CONTENT LOADING.
+// --------
+@-webkit-keyframes tds-s-content-spinner {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+@keyframes tds-s-content-spinner {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+
+.tds-s-content {
+  position: relative;
+  min-height: 50px;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    pointer-events: none;
+  }
+
+  &:before {
+    top: 0;
+    left: 0;
+    width: calc(~'100% + 6px');
+    height: calc(~'100% + 6px');
+    background-color: rgba(255, 255, 255, .8);
+    z-index: 1;
+  }
+
+  &:after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -23px;
+    margin-left: -23px;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #888;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: tds-s-content-spinner 1s infinite ease-out;
+    animation: tds-s-content-spinner 1s infinite ease-out;
+    z-index: 2;
+  }
+}
+
+.tds-s-content-sm {
+  &:after {
+    margin-top: -14px;
+    margin-left: -14px;
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+  }
+}
+
+.tds-s-content-no-height {
+  min-height: auto;
+}
+
+.tds-s-content-loading {
+  &:before,
+  &:after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+
+
+
+// --------
+// -- KEEP FOOTER ALWAYS AT THE BOTTOM OF THE PAGE
+// --------
+.tds-page {
+  #td-outer-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &:not(.admin-bar) {
+    #td-outer-wrap {
+      min-height: 100vh;
+    }
+  }
+
+  &.admin-bar {
+    #td-outer-wrap {
+      @media (min-width: 783px) {
+        min-height: calc(~'100vh - 32px');
+      }
+
+      @media (max-width: 782px) {
+        min-height: calc(~'100vh - 46px');
+      }
+    }
+  }
+
+  .td-main-content-wrap {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-direction: column;
+
+    .tdc-content-wrap {
+      width: 100%;
+      min-height: 100%;
+
+      > .tdc-zone {
+        height: 100%;
+
+        > .tdc_zone {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &.page-template-page-pagebuilder-latest {
+    .td-main-content-wrap {
+      flex-direction: column;
+    }
+  }
+
+}
+
+/* block error */
+.tds-block-error {
+  margin-bottom: 26px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  text-align: left;
+  padding: 20px;
+  border: 1px solid #eeecf0;
+  color: black;
+
+  span {
+    background-color: #ec4d4d;
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px 4px;
+    font-size: 10px;
+    position: relative;
+    top: -1px;
+  }
+
+}
+
+/* fix hidden css added for firefox reader mode */
+body:not(.td-content-locked) .td-post-content .tds-locked-content[hidden] {
+  display: block;
+}
