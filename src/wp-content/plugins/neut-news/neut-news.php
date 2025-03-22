@@ -17,7 +17,7 @@ function register_neut_news_widget() {
 add_action( 'widgets_init', 'register_neut_news_widget' );
 
 function neut_news_plugin_enqueue_styles() {
-    wp_enqueue_style( 'news-cards-styles', plugins_url( '/css/style.css', __FILE__ ) );
+    wp_enqueue_style( 'news-cards-neut-styles', plugins_url( '/css/style.css', __FILE__ ) );
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' );
 }
 add_action( 'wp_enqueue_scripts', 'neut_news_plugin_enqueue_styles' );

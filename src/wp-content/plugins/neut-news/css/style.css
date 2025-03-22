@@ -1,87 +1,79 @@
-.news-cards-container {
+.row {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
 }
-
-.news-card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
+.column {
+    flex: 1;
+    padding: 10px; /* Added padding to column */
 }
-
-.newspaper-stripe {
-    background: #f7f7f7;
-    padding: 10px;
-    display: flex;
-    align-items: center;
+.column-1-5 {
+    flex: 1 1 20%;
 }
-
-.newspaper-info {
-    display: flex;
-    align-items: center;
+.column-4-5 {
+    flex: 1 1 80%;
 }
-
-.newspaper-info img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.news-title-row {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .news-title {
-    font-size: 18px;
-    font-weight: bold;
+    line-height: 1.5; /* Adjusted line height */
 }
-
-.dropdown button {
-    background: #0073aa;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.category-scores {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.category_neut {
-    text-align: center;
-}
-
-.stars {
-    color: #ffcc00;
-}
-
-.total-score {
-    padding: 10px;
-    background: #f7f7f7;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.ai-comment {
-    padding: 10px;
-    background: #fff;
-    border-top: 1px solid #ddd;
-}
-
 .ai-comment p {
-    margin: 5px 0;
+    font-family: universalSans, sans-serif; /* Changed font to Arial */
+    line-height: 1.5; /* Adjusted line height */
+}
+.ai-comment.collapsed p {
+    display: none;
+}
+.ai-comment.collapsed p:first-of-type {
+    display: block;
+}
+.toggle-button {
+    cursor: pointer;
+    color: white; /* Changed color to red */
+    text-decoration: underline;
+    font-family: Arial, sans-serif; /* Changed font to Arial */
+    font-size: smaller; /* Made the text smaller */
+    text-align: center; /* Centered the text */
+    display: block; /* Ensured it takes the full width */
+    margin-bottom: 10px; /* Added margin for spacing */
+}
+img {
+    border-radius: 10px; /* Added rounded borders to images */
+}
+.dropdown button {
+    width: auto; /* Set button width to auto */
+}
+.category_neut {
+    display: flex; /* Added flex display to keep icon and label on the same line */
+    align-items: center; /* Align items vertically centered */
+}
+.category_neut i {
+    margin-right: 5px; /* Added margin to the right of the icon */
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    .column {
+        width: 100%;
+        padding: 5px; /* Adjust padding for smaller screens */
+    }
+    .toggle-button {
+        font-size: smaller; /* Adjust font size for smaller screens */
+    }
+    .category-scores {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .category_neut {
+        font-size: smaller; /* Make the score smaller on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .toggle-button {
+        font-size: x-small; /* Further adjust font size for very small screens */
+    }
+    .category_neut {
+        font-size: x-small; /* Further make the score smaller on very small screens */
+    }
 }
