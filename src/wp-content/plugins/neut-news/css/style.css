@@ -37,15 +37,20 @@
 img {
     border-radius: 10px; /* Added rounded borders to images */
 }
-.dropdown button {
-    width: auto; /* Set button width to auto */
-}
+
 .category_neut {
     display: flex; /* Added flex display to keep icon and label on the same line */
     align-items: center; /* Align items vertically centered */
 }
 .category_neut i {
     margin-right: 5px; /* Added margin to the right of the icon */
+}
+.dropdown button {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    /** align to the right */
+    right: 0;
 }
 
 @media (max-width: 768px) {
