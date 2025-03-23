@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__); ?>css/style.css">
+
 <script>
     function toggleComment(id) {
         var comment = document.getElementById('ai-comment-' + id);
@@ -17,16 +19,132 @@
     });
 </script>
 
+<style>
+    .score-card {
+      width: 100%;
+      max-width: 300px;
+      height: 40px;
+      /*background-color: rgb(202, 137, 77);*/
+      color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 5px;
+      box-sizing: border-box;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .score-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .left {
+      font-size: 1.0rem;
+      font-weight: 600;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .emoji {
+      font-size: 1.0rem;
+      margin-bottom: 4px;
+    }
+
+    .score-text {
+      font-size: 0.9em;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .score-text small {
+      font-size: 0.6rem;
+      opacity: 0.8;
+    }
+  </style>
+
 <div class="news-card">
     <div class="newspaper-stripe">
         <div class="newspaper-info">
             <img style="margin-bottom:0px!important" src="<?php echo esc_url($news->newspaper_logo); ?>" alt="Logo">
-            <div class="newspaper-name"><?php echo esc_html($news->newspaper_name); ?></div>
+            <div class="newspaper-name"><?php echo esc_html($news->newspaper_name); ?> <?php echo $bandiera ?? '' ?></div>
         </div>
     </div>
     <div class="row">
         <div class="column column-1-5">
             <img style="margin-bottom:0px!important" src="<?php echo esc_url($news->img); ?>" alt="Logo">
+            
+            <div class="total-score" style="margin-top: 10px; width: 100%;">
+                <div class="score-card" style="
+                <?php
+                    $hue = ($news->n_score / 100) * 120; // 0 = red, 120 = green
+                    $backgroundColor = "hsl($hue, 70%, 45%)";
+                    echo "background-color: $backgroundColor;";
+                ?>">
+                    <div class="title">⭐ N Score: </div>
+                    <div class="score-area">
+                        <div class="score-text"> 
+                            <?php echo round($news->n_score); ?><small>/100</small> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="total-score" style="margin-top: 10px; width: 100%;">
+                <div class="score-card" style="
+                <?php
+                    $hue = ($news->n_score / 100) * 120; // 0 = red, 120 = green
+                    $backgroundColor = "hsl($hue, 70%, 45%)";
+                    echo "background-color: $backgroundColor;";
+                ?>">
+                    <div class="title">🔍 Complet: </div>
+                    <div class="score-area">
+                        <div class="score-text"> 
+                            <?php echo round($news->completeness_score); ?><small>/100</small> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-score" style="margin-top: 10px; width: 100%;">
+                <div class="score-card" style="
+                <?php
+                    $hue = ($news->n_score / 100) * 120; // 0 = red, 120 = green
+                    $backgroundColor = "hsl($hue, 70%, 45%)";
+                    echo "background-color: $backgroundColor;";
+                ?>">
+                    <div class="title">⚖️ Bias: </div>
+                    <div class="score-area">
+                        <div class="score-text"> 
+                            <?php echo round($news->bias_score); ?><small>/100</small> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="total-score" style="margin-top: 10px; width: 100%;">
+                <div class="score-card" style="
+                <?php
+                    $hue = ($news->n_score / 100) * 120; // 0 = red, 120 = green
+                    $backgroundColor = "hsl($hue, 70%, 45%)";
+                    echo "background-color: $backgroundColor;";
+                ?>">
+                    <div class="title">✍️ Ling: </div>
+                    <div class="score-area">
+                        <div class="score-text"> 
+                            <?php echo round($news->language_score); ?><small>/100</small> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="column column-4-5">
             <div class="news-title-row">
@@ -39,33 +157,16 @@
                 <p><strong>Bias:</strong> <?php echo esc_html($ai_comment['bias']); ?></p>
                 <p><strong>Linguaggio:</strong> <?php echo esc_html($ai_comment['language']); ?></p>
             </div>
-            <div id="toggle-button-<?php echo esc_attr($news->id); ?>" class="toggle-button" onclick="toggleComment('<?php echo esc_attr($news->id); ?>')">Mostra analisi</div>
-            <div class="category-scores">
-                <div class="category_neut">
-                    <i class="fas fa-check-double"></i> Completezza<br>
-                    <div class="stars">
-                        <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->completeness_score / 20)); ?>
-                    </div>
-                </div>
-                <div class="category_neut">
-                    <i class="fas fa-balance-scale"></i> Bias<br>
-                    <div class="stars">
-                        <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->bias_score / 20)); ?>
-                    </div>
-                </div>
-                <div class="category_neut">
-                    <i class="fas fa-language"></i> Linguaggio<br>
-                    <div class="stars">
-                        <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->language_score / 20)); ?>
-                    </div>
-                </div>
-            </div>
-            <div class="total-score">
-                <i class="fas fa-star"></i> NScore: <?php echo round($news->n_score); ?>/100
-            </div>
+            <div id="toggle-button-<?php echo esc_attr($news->id); ?>" class="toggle-button" onclick="toggleComment('<?php echo esc_attr($news->id); ?>')">Leggi tutto</div>
             <div class="dropdown" style="text-align: right;">
-                <button>
-                    <a href="<?php echo esc_url($news->url); ?>" target="_blank" style="color:#FFF">Leggi</a>
+                <button style="background-color: <?php echo $news->is_paywall == 1 ? 'orange' : 'green'; ?>;">
+                    <a href="<?php echo esc_url($news->url); ?>" target="_blank" style="color:#FFF">
+                        <?php if ($news->is_paywall == 1) { ?>
+                            Leggi (a pagamento) 💰 <i class="fa-solid fa-up-right-from-square"></i>
+                        <?php } else { ?>
+                            Leggi <i class="fa-solid fa-up-right-from-square"></i>
+                        <?php } ?>
+                    </a>
                 </button>
             </div>
         </div>

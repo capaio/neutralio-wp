@@ -54,7 +54,7 @@ class Neut_News_Cards_Widget extends WP_Widget {
         global $wpdb;
         $news_query = $wpdb->get_results(
             $wpdb->prepare(
-                "SELECT n.*, np.name AS newspaper_name, np.logo AS newspaper_logo
+                "SELECT n.*, np.name AS newspaper_name, np.logo AS newspaper_logo, np.nazione as nazione
                  FROM nnews_crawl n
                  JOIN mod971_newspapers np ON n.newspaper_id = np.id
                  WHERE n.post_id = %d
@@ -82,6 +82,20 @@ class Neut_News_Cards_Widget extends WP_Widget {
     // Function to generate the HTML for each news card
     private function generate_news_card( $news ) {
         $ai_comment = json_decode($news->ai_comment, true);
+        $emoji_flags = [
+            'US' => '🇺🇸',
+            'IT' => '🇮🇹',
+            'FR' => '🇫🇷',
+            'DE' => '🇩🇪',
+            'JP' => '🇯🇵',
+            'UK' => '🇬🇧', 
+            'ES' => '🇪🇸', 
+        ];
+
+        if(isset($emoji_flags[$news->nazione])){
+            $bandiera = $emoji_flags[$news->nazione];
+        }
+
         include plugin_dir_path(__FILE__) . 'templates/news-card-template.php';
     }
 }
