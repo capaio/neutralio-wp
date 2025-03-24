@@ -164,7 +164,7 @@
             
 <!--            <div class="total-score" style="margin-top: 10px; width: 100%;">
                 <div class="score-card" style="background-color:rgb(44, 98, 150);">
-                    <div class="left"><i class="fas fa-check-double"></i> Completezza: </div>
+                    <div class="left"><i class="fas fa-check-double"></i> accuratezza: </div>
                     <div class="right">
                         <?php echo round($news->completeness_score); ?><small>/100</small> 
                     </div>
@@ -197,14 +197,14 @@
                 </div>
             </div>
             <div id="ai-comment-<?php echo esc_attr($news->id); ?>" class="ai-comment">
-                <p><strong>Completezza:</strong> <?php echo esc_html($ai_comment['completeness']); ?></p>
+                <p><strong>Accuratezza:</strong> <?php echo esc_html($ai_comment['completeness']); ?></p>
                 <p><strong>Bias:</strong> <?php echo esc_html($ai_comment['bias']); ?></p>
                 <p><strong>Linguaggio:</strong> <?php echo esc_html($ai_comment['language']); ?></p>
             </div>
             <div id="toggle-button-<?php echo esc_attr($news->id); ?>" class="toggle-button" onclick="toggleComment('<?php echo esc_attr($news->id); ?>')">Leggi tutto</div>
             <div class="category-scores">
                 <div class="category_neut">
-                    <i class="fas fa-check-double"></i> Completezza<br>
+                    <i class="fas fa-check-double"></i> Accuratezza<br>
                     <div class="stars">
                         <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->completeness_score / 20)); ?>
                     </div>
