@@ -59,7 +59,7 @@ class Cards_Front_Page_Widget extends WP_Widget {
                 while ( $query->have_posts() ) {
                     $query->the_post();
                     $post_id = get_the_ID();
-                    $nnews = getNnewsFromPostId($post_id);
+                    $nnews = getNnewsCrawlFromPostId($post_id);
                     // Output the post title and a link to the post
                     $post_link = get_permalink($post_id);
                     $this->generate_code($nnews,$post_link);

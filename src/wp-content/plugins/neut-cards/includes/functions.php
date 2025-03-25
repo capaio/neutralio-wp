@@ -35,3 +35,24 @@ function getNnewsFromPostId($post_id){
     return $news_query;
 
 }
+
+function getNnewsCrawlFromPostId($post_id){
+
+    //echo $post_id;
+
+    global $wpdb;
+    $news_query = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT n.*, np.name AS newspaper_name, np.logo AS newspaper_logo, np.nazione
+             FROM nnews_crawl n
+             JOIN mod971_newspapers np ON n.newspaper_id = np.id
+             WHERE n.post_id = %d
+             ORDER BY n.n_score DESC
+             ",
+            $post_id
+        )
+    );
+
+    return $news_query;
+
+}

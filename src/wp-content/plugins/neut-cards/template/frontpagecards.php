@@ -1,4 +1,16 @@
-<?php function getFrontpageNnews($nnews_array, $post_link) { $nnews_array=array_slice($nnews_array, 0, 2);?>
+<?php function getFrontpageNnews($nnews_array, $post_link) {
+    $emoji_flags = [
+        'US' => '🇺🇸',
+        'IT' => '🇮🇹',
+        'FR' => '🇫🇷',
+        'DE' => '🇩🇪',
+        'JP' => '🇯🇵',
+        'UK' => '🇬🇧',
+        'ES' => '🇪🇸',
+    ];
+
+
+    $nnews_array=array_slice($nnews_array, 0, 3);?>
 <div class="td_flex_block_1 tdi_92 td-pb-border-top td_block_template_1 td_flex_block" data-td-block-uid="tdi_92">
 <style>.tdi_92{margin-bottom:20px!important}@media (min-width:1019px) and (max-width:1140px){.tdi_92{margin-bottom:15px!important}}@media (min-width:768px) and (max-width:1018px){.tdi_92{margin-bottom:10px!important}}@media (max-width:767px){.tdi_92{margin-bottom:0px!important}}</style>
 <style>.tdi_92 .entry-thumb{background-position:center 50%}.tdi_92 .td-module-container{flex-direction:column;border-color:#eaeaea!important}.tdi_92 .td-image-container{display:block;order:0}.ie10 .tdi_92 .td-module-meta-info,.ie11 .tdi_92 .td-module-meta-info{flex:auto}body .tdi_92 .td-favorite{font-size:36px;box-shadow:1px 1px 4px 0px rgba(0,0,0,0.2)}.tdi_92 .td-module-meta-info{padding:0px;border-color:#eaeaea}.tdi_92 .td_module_wrap{padding-left:20px;padding-right:20px;padding-bottom:20px;margin-bottom:20px}.tdi_92 .td_block_inner{margin-left:-20px;margin-right:-20px}.tdi_92 .td-module-container:before{bottom:-20px;border-width:0 0 1px 0;border-style:solid;border-color:#eaeaea;border-color:var(--news-hub-dark-grey)}.tdi_92 .td-post-vid-time{display:block}.tdi_92 .td-post-category{margin:0 13px 0 0;padding:2px 13px 2px 0;background-color:rgba(234,234,234,0);color:var(--news-hub-white);border-width:0 1px 0 0;border-style:solid;border-color:#aaa;border-color:var(--news-hub-dark-grey);font-family:Lato!important;font-size:12px!important;line-height:1.2!important;font-weight:700!important;text-transform:uppercase!important}.tdi_92 .td-post-category:not(.td-post-extra-category){display:inline-block}.tdi_92 .td-author-photo .avatar{width:20px;height:20px;margin-right:6px;border-radius:50%}.tdi_92 .td-excerpt{display:none;column-count:1;column-gap:48px}.tdi_92 .td-audio-player{opacity:1;visibility:visible;height:auto;font-size:13px}.tdi_92 .td-read-more{display:none}.tdi_92 .td-author-date{display:inline}.tdi_92 .td-post-author-name{display:none}.tdi_92 .td-post-date,.tdi_92 .td-post-author-name span{display:inline-block;color:var(--news-hub-light-grey)}.tdi_92 .entry-review-stars{display:none}.tdi_92 .td-icon-star,.tdi_92 .td-icon-star-empty,.tdi_92 .td-icon-star-half{font-size:15px}.tdi_92 .td-module-comments{display:none}.tdi_92 .td_module_wrap:nth-last-child(1){margin-bottom:0;padding-bottom:0}.tdi_92 .td_module_wrap:nth-last-child(1) .td-module-container:before{display:none}.tdi_92 .td-post-category:hover{background-color:rgba(234,234,234,0)!important;color:var(--news-hub-white)}.tdi_92 .td-module-title a{color:var(--news-hub-white);box-shadow:inset 0 0 0 0 #000}.tdi_92 .td_module_wrap:hover .td-module-title a{color:var(--news-hub-accent-hover)!important}.tdi_92 .entry-title{margin:0 0 14px;font-family:Lato!important;font-size:20px!important;line-height:1.25!important;font-weight:700!important}.tdi_92 .td-editor-date,.tdi_92 .td-editor-date .td-post-author-name a,.tdi_92 .td-editor-date .entry-date,.tdi_92 .td-module-comments a{font-family:Lato!important;font-size:12px!important;line-height:1.2!important}html:not([class*='ie']) .tdi_92 .td-module-container:hover .entry-thumb:before{opacity:0}@media (min-width:768px){.tdi_92 .td-module-title a{transition:all 0.2s ease;-webkit-transition:all 0.2s ease}}@media (min-width:1019px) and (max-width:1140px){.tdi_92 .td_module_wrap{padding-bottom:15px;margin-bottom:15px;padding-bottom:15px!important;margin-bottom:15px!important}.tdi_92 .td-module-container:before{bottom:-15px}.tdi_92 .td-post-category{margin:0 8px 0 0;padding:2px 11px 2px 0;font-size:11px!important}.tdi_92 .td_module_wrap:nth-last-child(1){margin-bottom:0!important;padding-bottom:0!important}.tdi_92 .td_module_wrap .td-module-container:before{display:block!important}.tdi_92 .td_module_wrap:nth-last-child(1) .td-module-container:before{display:none!important}.tdi_92 .td-module-title a{box-shadow:inset 0 0 0 0 #000}.tdi_92 .entry-title{margin:0 0 10px;font-size:17px!important}.tdi_92 .td-editor-date,.tdi_92 .td-editor-date .td-post-author-name a,.tdi_92 .td-editor-date .entry-date,.tdi_92 .td-module-comments a{font-size:11px!important}@media (min-width:768px){.tdi_92 .td-module-title a{transition:all 0.2s ease;-webkit-transition:all 0.2s ease}}}@media (min-width:768px) and (max-width:1018px){.tdi_92 .td_module_wrap{padding-bottom:10px;margin-bottom:10px;padding-bottom:10px!important;margin-bottom:10px!important}.tdi_92 .td-module-container:before{bottom:-10px}.tdi_92 .td-post-category{margin:0 7px 0 0;padding:2px 9px 2px 0;font-size:10px!important}.tdi_92 .td_module_wrap:nth-last-child(1){margin-bottom:0!important;padding-bottom:0!important}.tdi_92 .td_module_wrap .td-module-container:before{display:block!important}.tdi_92 .td_module_wrap:nth-last-child(1) .td-module-container:before{display:none!important}.tdi_92 .td-module-title a{box-shadow:inset 0 0 0 0 #000}.tdi_92 .entry-title{margin:0 0 6px;font-size:14px!important;line-height:1.15!important}.tdi_92 .td-editor-date,.tdi_92 .td-editor-date .td-post-author-name a,.tdi_92 .td-editor-date .entry-date,.tdi_92 .td-module-comments a{font-size:10px!important}@media (min-width:768px){.tdi_92 .td-module-title a{transition:all 0.2s ease;-webkit-transition:all 0.2s ease}}}@media (max-width:767px){.tdi_92 .td_module_wrap{padding-bottom:15px;margin-bottom:15px;padding-bottom:15px!important;margin-bottom:15px!important}.tdi_92 .td-module-container:before{bottom:-15px}.tdi_92 .td-post-category{margin:0 8px 0 0;padding:2px 11px 2px 0;font-size:11px!important}.tdi_92 .td_module_wrap:nth-last-child(1){margin-bottom:0!important;padding-bottom:0!important}.tdi_92 .td_module_wrap .td-module-container:before{display:block!important}.tdi_92 .td_module_wrap:nth-last-child(1) .td-module-container:before{display:none!important}.tdi_92 .td-module-title a{box-shadow:inset 0 0 0 0 #000}.tdi_92 .entry-title{margin:0 0 10px;font-size:16px!important}.tdi_92 .td-editor-date,.tdi_92 .td-editor-date .td-post-author-name a,.tdi_92 .td-editor-date .entry-date,.tdi_92 .td-module-comments a{font-size:11px!important}@media (min-width:768px){.tdi_92 .td-module-title a{transition:all 0.2s ease;-webkit-transition:all 0.2s ease}}}</style><script>var block_tdi_92 = new tdBlock();
@@ -21,46 +33,46 @@ tdBlocksArray.push(block_tdi_92);
                     <div class="newspaper-stripe">
                         <div class="newspaper-info">
                             <img style="margin-bottom:0px!important" src="<?php echo esc_url($news->newspaper_logo); ?>" alt="Logo">
-                            <div class="newspaper-name"><?php echo esc_html($news->newspaper_name); ?></div>
+                            <div class="newspaper-name"><?php echo esc_html($news->newspaper_name); ?> <?php if ($emoji_flags[$news->nazione]) {echo $emoji_flags[$news->nazione];} ?></div>
                         </div>
                     </div>
-                    <h3 class="entry-title td-module-title"><a href="<?php echo $post_link ?>" title="<?php echo $news->title ?>"><?php echo $news->title ?></a></h3>
-                            <div class="category-scores">
-                                            <div class="category_neut">
-                                                <i class="fas fa-check-double"></i> Accuratezza<br>
-                                                <div class="stars">
-                                                    <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->factual_points / 20)); ?>
-                                                </div>
-                                            </div>
-                                            <div class="category_neut">
-                                                <i class="fas fa-balance-scale"></i> Opinioni o Fatti<br>
-                                                <div class="bar-container fact-opinion-bar">
-                                                    <div class="triangle" style="left:<?php echo $news->fact_vs_opinion_score; ?>%;"></div>
-                                                </div>
-                                            </div>
-                                            <div class="category_neut">
-                                                <?php get_political_bias($news->political_points); ?>
-                                            </div>
-                                            <div class="category_neut">
-                                                <i class="fas fa-shield-alt"></i> Credibilità<br>
-                                                <div class="stars">
-                                                    <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->credibility_score / 20)); ?>
-                                                </div>
-                                            </div>
-                                        </div>
+                    <h3 class="entry-title td-module-title"><a href="<?php echo $post_link ?>"><?php echo $news->title ?> </a></h3>
+                            <?php /*<div class="category-scores">
+                                <div class="category_neut">
+                                    <i class="fas fa-check-double"></i> Accuratezza<br>
+                                    <div class="stars">
+                                        <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->factual_points / 20)); ?>
+                                    </div>
+                                </div>
+                                <div class="category_neut">
+                                    <i class="fas fa-balance-scale"></i> Opinioni o Fatti<br>
+                                    <div class="bar-container fact-opinion-bar">
+                                        <div class="triangle" style="left:<?php echo $news->fact_vs_opinion_score; ?>%;"></div>
+                                    </div>
+                                </div>
+                                <div class="category_neut">
+                                    <?php get_political_bias($news->political_points); ?>
+                                </div>
+                                <div class="category_neut">
+                                    <i class="fas fa-shield-alt"></i> Credibilità<br>
+                                    <div class="stars">
+                                        <?php echo str_repeat('<i class="fas fa-star"></i>', round($news->credibility_score / 20)); ?>
+                                    </div>
+                                </div>
+                            </div>*/ ?>
 
-                                        <!-- Overall Score -->
-                                        <div class="total-score">
-                                            <i class="fas fa-star"></i> NScore: <?php echo round($news->nscore); ?>/100
-                                            <span class="score-info-icon" tabindex="0"> <!-- Question mark icon -->
-                                                    <i class="fas fa-question-circle"></i>
-                                                </span>
+                            <!-- Overall Score -->
+                            <div class="total-score">
+                                <i class="fas fa-star"></i> NScore: <?php echo round($news->n_score); ?>/100
+                                <span class="score-info-icon" tabindex="0"> <!-- Question mark icon -->
+                                        <i class="fas fa-question-circle"></i>
+                                    </span>
 
-                                                <!-- Tooltip popup content -->
-                                                <div class="popup-content">
-                                                    NScore è il punteggio che Neutralio assegna a ciascuna notizia. Esso è calcolato sulla base di un algoritmo proprietario. Tra i fattori tenuti in considerazione ci sono accuratezza, obiettività, bias politico (a prescindere se destra o sinistra) e credibilità. NScore varia da 0 a 100, dove 0 rappresenta la notizia meno affidabile e 100 la più affidabile.
-                                                </div>
-                                        </div>
+                                    <!-- Tooltip popup content -->
+                                    <div class="popup-content">
+                                        NScore è il punteggio che Neutralio assegna a ciascuna notizia. Esso è calcolato sulla base di un algoritmo proprietario. Tra i fattori tenuti in considerazione ci sono accuratezza, obiettività, bias politico (a prescindere se destra o sinistra) e credibilità. NScore varia da 0 a 100, dove 0 rappresenta la notizia meno affidabile e 100 la più affidabile.
+                                    </div>
+                            </div>
                     </div>
             </div>
         </div>
